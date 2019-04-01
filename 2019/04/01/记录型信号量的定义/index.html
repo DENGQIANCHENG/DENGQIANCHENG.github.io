@@ -177,7 +177,7 @@
         </center>
     </div>
     <div class="content-article">
-        <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*记录型信号量的定义*/</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> value;<span class="comment">//资源剩余数</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">process</span> *<span class="title">L</span>;</span><span class="comment">//等待队列</span></span><br><span class="line">    </span><br><span class="line">&#125;semaphore;</span><br><span class="line"><span class="comment">/*某进程需要使用资源时，通过wait原语申请*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">wait</span><span class="params">(semaphore S)</span></span>&#123;</span><br><span class="line">    S.value--;</span><br><span class="line">    <span class="keyword">if</span>(S.value&lt;<span class="number">0</span>)&#123;</span><br><span class="line">        block(S.L);<span class="comment">/*如果剩余资源数不够，使用block原语使进程从运行态进入阻塞态，并把挂到信号量S的等待队列（即阻塞队列）中*/</span></span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*进程使用完资源后，通过signal原语释放*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">signal</span><span class="params">(semaphore S)</span></span>&#123;</span><br><span class="line">    S.value++;</span><br><span class="line">    <span class="keyword">if</span>(S.value&lt;=<span class="number">0</span>)&#123;</span><br><span class="line">        wakeup(S,L);<span class="comment">/*释放资源后，若还有别的进程在等待这种资源，则使用wakeup原语唤醒等待队列中的一个进程，该进程从阻塞态变为就绪态*/</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+        <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*记录型信号量的定义*/</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> value;<span class="comment">//资源剩余数</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">process</span> *<span class="title">L</span>;</span><span class="comment">//等待队列</span></span><br><span class="line">    </span><br><span class="line">&#125;semaphore;</span><br><span class="line"><span class="comment">/*某进程需要使用资源时，通过wait原语申请*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">wait</span><span class="params">(semaphore S)</span></span>&#123;</span><br><span class="line">    S.value--;</span><br><span class="line">    <span class="keyword">if</span>(S.value&lt;<span class="number">0</span>)&#123;</span><br><span class="line">        block(S.L);<span class="comment">/*如果剩余资源数不够 ，   </span></span><br><span class="line"><span class="comment">使用block原语使进程从运行态进入阻塞态，并  </span></span><br><span class="line"><span class="comment">把挂到信号量S的等待队列（即阻塞队列）中*/</span></span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*进程使用完资源后，通过signal原语释放*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">signal</span><span class="params">(semaphore S)</span></span>&#123;</span><br><span class="line">    S.value++;</span><br><span class="line">    <span class="keyword">if</span>(S.value&lt;=<span class="number">0</span>)&#123;</span><br><span class="line">        wakeup(S,L);<span class="comment">/*释放资源后，若还有别的  </span></span><br><span class="line"><span class="comment">进程在等待这种资源，则使用wakeup原语唤醒等待  </span></span><br><span class="line"><span class="comment">队列中的一个进程，该进程从阻塞态变为就绪态*/</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 </article>
@@ -283,6 +283,12 @@
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2019/03/18/hello-world/">Hello World</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2019/03/18/我的第一篇博客/">我的第一篇博客</a>
                 </span>
             </li>
@@ -290,12 +296,6 @@
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/2019/04/01/记录型信号量的定义/">记录型信号量的定义</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2019/03/18/hello-world/">Hello World</a>
                 </span>
             </li>
             
