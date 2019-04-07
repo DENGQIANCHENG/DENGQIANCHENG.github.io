@@ -10,7 +10,7 @@
     
     
     
-    <title>23种设计模式之工厂模式 | Hexo</title>
+    <title>sql基本命令 | Hexo</title>
     <link href="”http://yoursite.com“" rel="”prefetch”">
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -142,19 +142,19 @@
         <i class="fa fa-home"></i>
         <a href="http://yoursite.com">Hexo</a>
         >
-        <span>23种设计模式之工厂模式</span>
+        <span>sql基本命令</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/2019/03/24/23种设计模式之工厂模式/">23种设计模式之工厂模式</a>
+                <a href="/2019/04/07/sql基本命令/">sql基本命令</a>
             </h1>
         </div>
         <div class="tag-article">
             
             <span class="label label-gal">
-                <i class="fa fa-calendar"></i> 2019-03-24
+                <i class="fa fa-calendar"></i> 2019-04-07
             </span>
             
         </div>
@@ -164,11 +164,11 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/2019/03/24/23种设计模式之工厂模式/">23种设计模式之工厂模式</a>
+                    <a href="/2019/04/07/sql基本命令/">sql基本命令</a>
                 </h4>
             </div>
             <p>
-                <i class="fa fa-calendar"></i> 2019-03-24
+                <i class="fa fa-calendar"></i> 2019-04-07
             </p>
             <p>
                 
@@ -177,7 +177,27 @@
         </center>
     </div>
     <div class="content-article">
-        
+        <h3 id="SQL中insert部分用法"><a href="#SQL中insert部分用法" class="headerlink" title="SQL中insert部分用法"></a>SQL中insert部分用法</h3><ul>
+<li>向表中插入一行（该行的每一列都有数据）  <ul>
+<li>insert into 表（列名，列名）values（值1，值2）  </li>
+<li>insert into 表 values（值1，值2）省略列名  </li>
+<li>插入数据时，只向某些列插入数据，<br>如果插入的行中有些字段的值不确定，那么<br>insert的时候不指向那些列即可  </li>
+<li>insert into 表（列1）values（值1）  </li>
+</ul>
+</li>
+<li>自动编号列不需要手动插入。若强行插入<strong>SET IDENTITY_INSERT 表名 ON</strong>，<strong>SET IDENTITY_INSERT 表名 OFF</strong>解除</li>
+<li>注意：主键不能有重复值。</li>
+<li>插入数据时的单引号问题。</li>
+<li>insert into 表 （列1，列2）select ‘值1’，‘值2’ union<br>一条语句插入多条记录</li>
+<li>insert into 表 （列1，列2）select 列1，列2 from 表<br>向一个表导入另一个表的数据</li>
+<li>select 列 into 新表名 from 旧表</li>
+<li>中文 N前缀 插入中文数据时，要在中文单引号外加上N，表明使用Unicode符号规则<h3 id="SQL中update部分用法"><a href="#SQL中update部分用法" class="headerlink" title="SQL中update部分用法"></a>SQL中update部分用法</h3></li>
+<li>update 表名 set 列名=值，列名2=值2 where 条件</li>
+<li>and or &lt;&gt;<h3 id="SQL中delete部分用法"><a href="#SQL中delete部分用法" class="headerlink" title="SQL中delete部分用法"></a>SQL中delete部分用法</h3></li>
+<li>delete from 表名 where,,,</li>
+<li>delete表示删除表中的数据，drop表示删除表。 <strong>drop table 表名</strong>的作用于<strong>delete from 表名</strong><br>一样，都是删除表中的全部数据，区别在于：<br>1，truncate语句非常高效，用时快<br>2，truncate会把表中的自动编号重置为默认值<br>3，truncate不会触发delete触发器</li>
+</ul>
+
     </div>
 </article>
 
@@ -321,17 +341,17 @@
 
                 
                 <li>
-                    <a href="/2019/03/24/23种设计模式之工厂模式/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2019/04/07/sql基本命令/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/2019/03/24/23种设计模式之工厂模式/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2019/04/07/sql基本命令/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/2019/03/24/23种设计模式之工厂模式/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2019/04/07/sql基本命令/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
                 
             </ul>
